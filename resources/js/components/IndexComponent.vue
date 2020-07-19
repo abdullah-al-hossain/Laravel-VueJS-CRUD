@@ -57,7 +57,11 @@
       {
         let uri = `/api/post/delete/${id}`;
         this.axios.delete(uri).then(response => {
-          this.posts.splice(this.posts.indexOf(id), 1);
+          console.log('deleted the post');
+        });
+
+        this.axios.get('/api/posts').then(response => {
+          this.posts = response.data.data;
         });
       }
     }
